@@ -28,6 +28,7 @@ void mousePressed()
     rect(indexX*tileWidth,indexY*tileHeight,tileWidth,tileHeight);
     println("Correct");
   }
+  redraw();
 }
 void draw()
 {
