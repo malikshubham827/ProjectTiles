@@ -1,0 +1,61 @@
+//  Source Code till now. Constructive criticism invited.
+int x;
+int y;
+int speed = 1;
+int tileHeight = 200;
+int tileWidth = 100;
+int noOfTileX;       //No of tiles in horizontal direction
+int noOfTileY;       // NO of tiles in vertical direction
+int indexX;          // tile's x position as in a 2d array
+int indexY;          // tile's y position as in a 2d array
+//   Assume the tile be of size 100*200
+void setup()
+{
+  size(400,800);
+  background(255);
+  smooth();
+  noOfTileX = width/tileWidth;
+  noOfTileY = height/tileHeight;
+  draw_tiles();
+  frameRate(0.25);
+}
+void mousePressed()
+{
+  if(mouseX >= indexX*tileWidth && mouseX <= (indexX+1)*tileWidth && mouseY >= indexY*tileHeight && mouseY <= (indexY+1)*tileHeight)
+  {  
+    noStroke();
+    fill(48,33,232);
+    rect(indexX*tileWidth,indexY*tileHeight,tileWidth,tileHeight);
+    println("Correct");
+  }
+}
+void draw()
+{
+  background(255);
+  draw_tiles();
+  color_tiles();
+}
+
+void draw_tiles()
+{
+  // x = vertical lines , y = horizontal lines
+  // Draw the vertical lines
+  for( x = 0 ; x < noOfTileX ;x++)
+  {
+    line(x*tileWidth,0,x*tileWidth,height);
+  }
+  // Draw the horizontal tiles
+  for(y = 0;y < noOfTileY;y++)
+  {
+    line(0,y*tileHeight, width, y*tileHeight);
+  }
+}
+void color_tiles()
+{
+  
+  indexX = int(random(0,noOfTileX));
+  indexY = int(random(0,noOfTileY));
+  fill(0);
+  rect(tileWidth*indexX,indexY*tileHeight,tileWidth,tileHeight);
+  
+}
